@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\Api\ActivityLogController;
+use App\Http\Controllers\Api\ConfigHeaterController;
+use App\Http\Controllers\Api\ConfigLampController;
+use App\Http\Controllers\Api\DataSensorsController;
+use App\Http\Controllers\Api\DevicesController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +23,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::resource('/user', UserController::class);
+Route::resource('/device', DevicesController::class);
+Route::resource('/data_sensors', DataSensorsController::class);
+Route::resource('/config_lamp', ConfigLampController::class);
+Route::resource('/config_heater', ConfigHeaterController::class);
+Route::resource('/activity_log', ActivityLogController::class);
