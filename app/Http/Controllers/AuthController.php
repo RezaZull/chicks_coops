@@ -21,7 +21,9 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
+            if(Auth::user()->is_admin==1){
+                return redirect()->intended('admin/user');
+            }
             return redirect()->intended('dashboard');
         }
 
@@ -45,7 +47,8 @@ class AuthController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
-            'avatar'=>'default'
+            'avatar'=>'https://lh3.googleusercontent.com/proxy/wDATN6gp5Z6xmwjogOL_9kmTDgM5LS4YXc9WO48kMljB3PCWp4ZV2VqaVSPYkjFn3TnNaUThjuHlgtD-oPyHWdY1FL9x-7dstRKFdl-KFDjRjH9xQ9sY13yzx9Rn-899oEi_',
+            'is_admin' => '0'
         ]);
 
         return redirect()->route('login');

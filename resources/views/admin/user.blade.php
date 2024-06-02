@@ -18,90 +18,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="ps-0">
-                                <div class="d-flex align-items-center gap-6">
-                                    <img src="{{ asset('images/products/dash-prd-1.jpg') }}" alt="prd1" width="48"
-                                        class="rounded" />
-                                    <div>
-                                        <h6 class="mb-0">Minecraf App</h6>
-                                        <span>Jason Roy</span>
+                        @foreach ($get_user as $data)
+
+                            <tr>
+                                <td class="ps-0">
+                                    <div class="d-flex align-items-center gap-6">
+                                        <img src="{{$data->avatar}}" alt="prd1"
+                                            width="48" class="rounded" />
+                                        <div>
+                                            <h6 class="mb-0">{{$data->name}}</h6>
+                                            <span>Admin</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span>user@example.com</span>
-                            </td>
-                            <td>
-                                <a href="/admin/user/update" class="btn btn-success">Edit</a>
-                            </td>
-                            <td>
-                                <button class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ps-0">
-                                <div class="d-flex align-items-center gap-6">
-                                    <img src="{{ asset('images/products/dash-prd-2.jpg') }}" alt="prd1" width="48"
-                                        class="rounded" />
-                                    <div>
-                                        <h6 class="mb-0">Web App Project</h6>
-                                        <span>Mathew Flintoff</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span>user@example.com</span>
-                            </td>
-                            <td>
-                                <a href="/admin/user/update" class="btn btn-success">Edit</a>
-                            </td>
-                            <td>
-                                <button class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ps-0">
-                                <div class="d-flex align-items-center gap-6">
-                                    <img src="{{ asset('images/products/dash-prd-3.jpg') }}" alt="prd1" width="48"
-                                        class="rounded" />
-                                    <div>
-                                        <h6 class="mb-0">Modernize Dashboard</h6>
-                                        <span>Anil Kumar</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span>user@example.com</span>
-                            </td>
-                            <td>
-                                <a href="/admin/user/update" class="btn btn-success">Edit</a>
-                            </td>
-                            <td>
-                                <button class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ps-0">
-                                <div class="d-flex align-items-center gap-6">
-                                    <img src="{{ asset('images/products/dash-prd-4.jpg') }}" alt="prd1" width="48"
-                                        class="rounded" />
-                                    <div>
-                                        <h6 class="mb-0">Dashboard Co</h6>
-                                        <span>George Cruize</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span>user@example.com</span>
-                            </td>
-                            <td>
-                                <a href="/admin/user/update" class="btn btn-success">Edit</a>
-                            </td>
-                            <td>
-                                <button class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    <span>{{$data->email}}</span>
+                                </td>
+                                <td>
+                                    <a href="/admin/user/{{$data->id}}/edit" class="btn btn-success">Edit</a>
+                                </td>
+                                <td>
+                                    <form action="/admin/user/{{ $data->id }}" method='POST'>
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+
+
                     </tbody>
                 </table>
             </div>

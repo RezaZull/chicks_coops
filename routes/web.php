@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Web\admin\WebDeviceController;
+use App\Http\Controllers\Web\admin\WebUserController;
 use App\Http\Controllers\Web\peternak\WebConfigLampController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -50,30 +52,15 @@ Route::get('/heater', function () {
 //Web admin Lamp
 Route::resource('/lamp', WebConfigLampController::class, ['parameters' => ['lamp' => 'configLamp']]);
 
-//Admin
-Route::get('/admin/user', function () {
-    return view('admin.user');
-});
+//Web admin/user
+Route::resource('/admin/user', WebUserController::class);
 
-Route::get('/admin/user/create', function () {
-    return view('admin.FormUser');
-});
+//Web admin/device
+Route::resource('/admin/device', WebDeviceController::class,['parameters' => ['device' => 'devices']]);
 
-Route::get('/admin/device', function () {
-    return view('admin.device');
-});
 
-Route::get('/admin/device/create', function () {
-    return view('admin.FormDevice');
-});
 
-Route::get('/admin/user/update', function () {
-    return view('admin.FormUpdateUser');
-});
 
-Route::get('/admin/device/update', function () {
-    return view('admin.FormUpdateDevice');
-});
 
 // Route::get('/lamp/create', function () {
 //     return view('peternak.CreateLamp');

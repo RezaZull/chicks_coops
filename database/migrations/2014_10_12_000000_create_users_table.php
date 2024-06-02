@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('avatar');
             $table->rememberToken();
             $table->timestamps();
+            $table->boolean('is_admin');
         });
     }
 

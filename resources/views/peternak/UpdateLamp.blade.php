@@ -20,8 +20,8 @@
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Status</label>
                 <select name="status" class="form-select" aria-label="Default select example">
-                    <option {{$configLamp=='1'?'selected':null}} value="1">On</option>
-                    <option {{$configLamp=='0'?'selected':null}} value="0">Off</option>
+                    <option {{$configLamp->status=='1'?'selected':null}} value="1">On</option>
+                    <option {{$configLamp->status=='0'?'selected':null}} value="0">Off</option>
                 </select>
             </div>
             <div class="mb-3">
